@@ -14,6 +14,10 @@
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
+	<mvc:view-controller path="/" view-name="index.html" />
+	
+	<mvc:default-servlet-handler/>
+	
 	<!-- 自动扫描包 ,将带有注解的类 纳入spring容器管理 -->
 	<context:component-scan base-package="zx.github.com" />
 	<!-- 添加注解驱动 -->
@@ -40,5 +44,31 @@
 	<bean id="beanNameViewResolver"
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 	</bean>
-
+	
+	
+	<!--多视图解析器 -->
+	 <bean id="HTMLViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="contentType" value="text/html; charset=utf-8"/>  
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value="" />
+        <property name="order" value="0"></property>
+    </bean>
+    
+	<bean id="FMViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true" />
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value="" />
+        <property name="order" value="1"></property>
+    </bean>
+    
+	<bean id="JSPViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>  
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value="" />
+        <property name="order" value="2"></property>
+    </bean>
+    
 </beans>
