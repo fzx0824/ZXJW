@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>vue+layui演示页面</title>
+<script type="text/javascript" src="/resource/script/component/vue/vue.js?v=1"></script>
+<script type="text/javascript" src="/resource/script/component/layui/layui.js?v=1"></script>
+
+</head>
+<body>
+	<div id="app-3">
+		<p v-if="seen">现在你看到我了</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		  el: '#app-3',
+		  data: {
+		    seen: true
+		  }
+		})
+</script>
+</html>
